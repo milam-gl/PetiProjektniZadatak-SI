@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Cosmetics </title>
+    <link rel="icon" type="image/x-icon" href="slike1/karmin.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8f0da5b046.js" crossorigin="anonymous"></script>
+    <!------SKRIPTA KOJA UZIMA IKONE SA STRANICE FONTAWESOME-->
+</head>
+
+<!-----------------------POČETNA STRANICA------------------------->
+
+<body background="slike1/radnja.jpeg">
+
+    <!----- INTERNI CSS ----->
+    <style>
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 250px;
+            height: 40px;
+        }
+
+        .container {
+            padding: 10px 10vh;
+        }
+
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+    </style>
+    <br><br>
+    <div id="zaglavlje">
+        <div class="container">
+            <nav>
+                <a href="index.html"><img src="slike1/mack.png" class="logo"></a>
+                <ul>
+                    <li><a href="onama.html">O nama</a></li>
+                    <li><a href="proizvodi.html">Proizvodi</a></li>
+                    <li><a href="akcije.html">Akcije</a></li>
+                    <li><a href="kontakt.html">Prijava</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <br><br>
+    <h1 style="font-size: 50px; margin-top: 3%; font-weight: 600; color: #fff; text-align: center; text-shadow: 0 1px 0 #ccc,
+0 2px 0 #c9c9c9,
+0 3px 0 #bbb,
+0 4px 0 #b9b9b9,
+0 5px 0 #aaa,
+0 6px 1px rgba(0,0,0,.1),
+0 0 5px rgba(0,0,0,.1),
+0 1px 3px rgba(0,0,0,.3),
+0 3px 5px rgba(0,0,0,.2),
+0 5px 10px rgba(0,0,0,.25),
+0 10px 10px rgba(0,0,0,.2),
+0 20px 20px rgba(0,0,0,.15);">
+        <div class="animated slideInDown">Prijava korisnika
+    </h1>
+    </div>
+    <br>
+    <form style="margin-left: 150px; margin-right: 150px;">
+        <input type="text" id='ime' name="Ime" placeholder="Ime i prezime:" required>
+        <input type="email" id='email' name="Email" placeholder="Email:" required>
+        <input type="password" id='pass' name="Šifra" minlength="2" maxlength="6" placeholder="Šifra:" name="Šifra"
+            required>
+        <input type="date" name="date" placeholder="Datum rezervacije u našem restoranu" required>
+        <input type="text" name="Hrana" placeholder="Napišite nam šta Vam se najviše dopalo..." required>
+        <textarea name="Message" rows="6" placeholder="Komentar:"></textarea>
+
+        <button style="margin-left: 630px; display: inline;" ; id='signup' type="submit"
+            class="dgme dgme2">Potvrdi</button>
+        <button style=" display: inline;" ; type="reset" class="dgme dgme2"
+            onclick="customAlert.alert('Unešeni podaci su obrisani.','Upozorenje')">Obriši</button>
+
+    </form>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        }
+            from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"
+
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBX-DeEW7LlOAr2ftzsMCqDicolEBu01oQ",
+            authDomain: "fir-7505a.firebaseapp.com",
+            projectId: "fir-7505a",
+            storageBucket: "fir-7505a.appspot.com",
+            messagingSenderId: "369502068768",
+            appId: "1:369502068768:web:d379ff805a55427a299c45"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const email = document.querySelector('#email');
+        const pass = document.querySelector('#pass');
+        const signup = document.querySelector('#signup');
+
+        const userSignUp = async () => {
+            const signUpEmail = email.value;
+            const signUpPassword = pass.value;
+            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                    if (!alert('Your account has been created')) { window.location.reload(); }
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode + errorMessage)
+                })
+
+        }
+
+        const userSignIn = async () => {
+            const signInEmail = email2.value;
+            const signInPassword = pass2.value;
+            signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    if (!alert('You have signed in succesfully')) {
+                        window.open(
+                            'second.html',
+                            '_self');
+                    }
+
+                })
+
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode + errorMessage)
+                })
+        }
+
+        signup.addEventListener('click', userSignUp);
+
+        signin.addEventListener('click', userSignIn);
+    </script>
+</body>
+
+<footer align="center">
+    <br><br>
+    <hr width="1900px" size="3px" color="white" />
+    <br><br>
+    <font color="white" size="5px">Radno vrijeme</font>
+    <br><br>
+    <footer align="center">
+        <br><br>
+
+        <font color="white">
+            <p align="center">
+                <span style="color: pink">Ponedjeljak:</span> 8 : 00 -----------23 : 00<br>
+                <span style="color: pink">Utorak: </span> 8 : 00 ----------------- 23 : 00<br>
+                <span style="color: pink">Srijeda: </span> 8 : 00------------------23 : 00<br>
+                <span style="color: pink">Četvrtak: </span> 8 : 00----------------23 : 00<br>
+                <span style="color: pink">Petak: </span>8 : 00-------------------23 : 00<br>
+                <span style="color: pink">Subota: </span>8 : 00-----------------23 : 00<br>
+                <span style="color: pink">Nedjelja: </span> 8 : 00----------------23 : 00
+            </p>
+
+
+
+            <br><br><br><br>
+            <p class="sredina" size="5px" color="white">Trenutno vrijeme</p>
+            <br><br><br><br><br><br>
+            <div class="clock special-clock">
+                <div class="hours"></div>
+                <div class="colon">:</div>
+                <div class="minutes"></div>
+                <div class="colon">:</div>
+                <div class="seconds"></div>
+            </div>
+
+        </font>
+
+
+
+
+        <hr style="margin-left:-90px; " width="1900px" size="3px" color="white" />
+        <div class="red">
+            <div class="kontakt-lijevi">
+
+                <p><i class="fa-solid fa-paper-plane"></i>mac.cosmetics@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>+387 (0)33 789 235</p>
+
+                <div class="ikonicesocijalne">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="kontakt-desni">
+                <br><br>
+                <p style="color:white; size:5px; margin:auto;">Lokacija</p>
+                <br><br>
+
+                <style>
+                    a:link {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    a:visited {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    a:hover {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    a:active {
+                        color: white;
+                        text-decoration: none;
+                    }
+                </style>
+
+
+                <font color="white">
+                    <p align="left"><a href="https://goo.gl/maps/d9B8T6nnwGvpQuib6" target="_blank">BBI
+                            CENTAR,
+                            Sarajevo, Bosna i Hercegovina, Federacija Bosne i Hercegovine 71000</p></a>
+                </font>
+                <br>
+                <div class="ikonicesocijalne">
+                    <a href="#"><i class="fa-solid fa-spa"></i></a>
+                    <a href="#"><i class="fa-regular fa-eye"></i></a>
+                    <a href="#"><i class="fa-solid fa-person-dress"></i></a>
+                    <a href="#"><i class="fa-regular fa-face-grin-hearts"></i></a>
+                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+
+
+
+
+                </div>
+            </div>
+            <script src="/javascript.js"></script>
+    </footer>
+    <br><br>
+
+</html>

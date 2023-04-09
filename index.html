@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MAC Cosmetics </title>
+    <link rel="icon" type="image/x-icon" href="slike1/karmin.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8f0da5b046.js" crossorigin="anonymous"></script>
+    <style>
+        h1 {
+            font-size: 70px;
+            margin-top: 3%;
+            text-align: left;
+        }
+
+        .pink-text {
+            color: pink;
+            text-shadow: 0 1px 0 #ec0095,
+                0 2px 0 #c61baa,
+                0 3px 0 #af318e,
+                0 4px 0 #df79b8,
+                0 5px 0 #bd7fa7,
+                0 6px 1px rgba(0, 0, 0, .1),
+                0 0 5px rgba(0, 0, 0, .1),
+                0 1px 3px rgba(0, 0, 0, .3),
+                0 3px 5px rgba(0, 0, 0, .2),
+                0 5px 10px rgba(0, 0, 0, .25),
+                0 10px 10px rgba(0, 0, 0, .2),
+                0 20px 20px rgba(0, 0, 0, .15);
+        }
+    </style>
+
+</head>
+
+<!-----------------------POČETNA STRANICA------------------------->
+
+<body background="slike1/radnja.jpeg">
+    <!----- INTERNI CSS ----->
+    <style>
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 250px;
+            height: 40px;
+        }
+
+        .container {
+            padding: 10px 10vh;
+        }
+
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+    </style>
+
+    <br><br>
+    <div id="zaglavlje">
+        <div class="container">
+            <nav>
+
+                <a href="index.html"><img src="slike1/mack.png" alt="Logo se ne moze učitati, žao nam je..."
+                        class="logo"></a>
+                <ul>
+                    <li><a href="onama.html">O nama</a></li>
+                    <li><a href="proizvodi.html">Proizvodi</a></li>
+                    <li><a href="akcije.html">Akcije</a></li>
+                    <li><a href="kontakt.html">Prijava</a></li>
+                </ul>
+            </nav>
+            <br><br><br><br>
+            <div class="zaglavlje-tekst">
+                <!-----INLINE CSS----->
+                <p style="color:#fff; font-size: 45px; font-weight: bold; text-align: center"><br>Svaka dob, sve rase,
+                    svi
+                    spolovi</p>
+
+                <body onload="myFunction()">
+
+                    <h1 id="welcome">Dobrodošli, na stranicu <span class="pink-text">M∙A∙C COSMETICS</span><br>
+                        </h1>
+
+                    <script>
+                        function myFunction() {
+                            let name = prompt("Molimo Vas da unesete Vaše ime:", "");
+                            let welcome = document.getElementById("welcome");
+
+                            if (name == null || name == "") {
+                                welcome.innerHTML = "Dobrodošli, na stranicu <span class='pink-text'>M∙A∙C COSMETICS</span><br>";
+                            } else {
+                                welcome.innerHTML = "Dobrodošli, " + name + ", na stranicu <span class='pink-text'>M∙A∙C COSMETICS</span><br>";
+                            }
+
+                        }
+                        
+                    </script>
+                    <br><br>
+                    <p style="color:#fff; font-size: 30px; font-weight: bold; "> Od 1984.godine, M·A·C cosmetics se
+                        ustanovio kao
+                        vrhunski autoritet <br> za boje s umjetništvom u našim korijenima,
+                        uključivanjem i raznolikošću u našoj
+                        srži, <br>
+                        te predanošću svjesnoj ljepoti i društvenoj odgovornosti na vrhu našeg uma.
+                        S proizvodima koji,<br>
+                        se prodaju u preko 120 zemalja,
+                        nije čudo zašto se naše ljubiteljice šminke uvijek vraćaju M·A·C kozmetici.<span><span xy
+                                style="color: pink; font-style:italic; font-size: 25px; font-weight: bold; "><br><br>Uz
+                                proizvode
+                                visoke
+                                učinkovitosti u rasponu od pudera, maskara i karmina, tu je M·A·C proizvod upravo
+                                skrojen za
+                                svakog ljubitelja šminke.</span>
+                    </p>
+                </body>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
